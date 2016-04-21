@@ -1,0 +1,14 @@
+{
+  "name": "wrap-bin-script",
+  "version": "0.0.0",
+  "description": "",
+  "author": "Kyle E. Mitchell <kyle@kemitchell.com> (https://kemitchell.com/)",
+  "repository": "kemitchell/wrap-bin-script.js",
+  "bin": {
+    "wrapper": "bin"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "yo": "^1.7.0"
+  }
+}

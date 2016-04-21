@@ -1,0 +1,24 @@
+#!/bin/bash
+# Find where npm has installed the wrap-bin-script package.
+# From there, we can find wrap-bin-script's node_modules/.bin path.
+SCRIPT_PATH="${BASH_SOURCE[0]}"
+while [ -L "$SCRIPT_PATH" ]; do
+	SCRIPT_PATH=$(readlink "$SCRIPT_PATH")
+done
+
+PACKAGE_BIN="$(dirname "${BASH_SOURCE[0]}")/$(dirname "$SCRIPT_PATH")/node_modules/.bin"
+
+SUBCOMMAND="$1"
+
+if [ "$SUBCOMMAND" == "yo" ]; then
+	shift
+	exec "$PACKAGE_BIN/yo" "$@"
+else
+	cat <<EOS
+An experiment in bin script proxies.
+
+Usage:
+  wrap-bin-script yo
+EOS
+	exit 1
+fi
